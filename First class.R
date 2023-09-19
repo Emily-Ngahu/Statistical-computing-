@@ -1,0 +1,59 @@
+#data frames 
+Age<-c(21,23,24,25,30,23)
+Age 
+Gender<-c("male","female","male","female","male","female")
+Gender
+Course<-c("BAS","BAS","BBS","BBS","BST","BST")
+Course
+students_data<-data.frame(Age,Gender,Course)
+students_data
+install.packages("dplyr")
+library(dplyr)
+#select()
+subset1<-select(students_data,Course,Gender)
+subset1
+subset2<-select(students_data,-Gender)
+subset2
+subset3<-select(students_data,starts_with("G"))
+subset3
+#filter()
+filter1<-filter(students_data,Age>25)
+filter1
+filter2<-filter(students_data,Age>=23&Age<=25)
+filter2
+filter3<-filter(students_data,Gender=="male")
+filter3
+filter4<-filter(students_data,Gender=="male"&Course=="BAS")
+filter4
+library(dplyr)
+#Arrange()
+Arrange1<-arrange(students_data,Age)
+Arrange1
+#Rename()
+data<-rename(students_data,Degree=Course)
+data
+#mutate()
+dataset<-mutate(students_data,AgeDiff=Age-mean(Age))
+dataset
+#group_by 
+data_bygender<-group_by(students_data,Gender)
+data_bygender
+summarize(data_bygender,meanAge=mean(Age),sdAge=sd(Age))
+#pipeline operator 
+output<-mutate(students_data,AgeDiff=Age-mean(Age))%>% group_by(Gender)%>%summarize(meanAge=mean(Age),sdAge=sd(Age))
+output
+students_data
+dataset
+#matrices 
+vec<-c(6,0,8,2,1,9,3,2,4)
+vec
+matvec<-matrix(vec,ncol=3,nrow=3)
+matvec
+apply(matvec,2,mean)
+apply(matvec,1,mean)
+funcm<-function(x){
+  out<-(x-min(x))/max(x)
+  return(out)
+}
+apply(matvec,2,funcm)
+apply(matvec,1,funcm)
