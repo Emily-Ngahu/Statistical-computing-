@@ -79,7 +79,10 @@ lmest<-function(x,Y){
   return(c(B0,B1))
 }
 lmest(x=data[,1],Y=data[,2])
+(2405+290+280+950)/2
+2405/2
+570/2
 
-
+1490
 
 
