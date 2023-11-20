@@ -18,3 +18,9 @@ fx<-function(x,a,b){
 output<-Vectorize(fx)
 output
 output(3,6,3,4,2,6)
+R.version.string
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("yuima")
+install.packages("installr")
+library(installr)
+updateR()
